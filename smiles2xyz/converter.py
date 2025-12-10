@@ -7,7 +7,7 @@ with explicit hydrogen atoms.
 from typing import Final
 
 from rdkit import Chem
-from rdkit.Chem import AllChem
+from rdkit.Chem import AllChem, rdmolfiles
 
 
 class ConversionError(Exception):
@@ -73,16 +73,5 @@ def mol_to_xyz(mol: Chem.Mol) -> str:
         msg: Final[str] = "Molecule has no 3D coordinates (conformer)"
         raise ConversionError(msg)
 
-    conformer: Chem.Conformer = mol.GetConformer()
-    num_atoms: int = mol.GetNumAtoms()
-
-    # Build XYZ string
-    lines: list[str] = [str(num_atoms), ""]  # First line: number of atoms, second line: comment
-
-    for atom_idx in range(num_atoms):
-        atom: Chem.Atom = mol.GetAtomWithIdx(atom_idx)
-        symbol: str = atom.GetSymbol()
-        pos: Chem.rdGeometry.Point3D = conformer.GetAtomPosition(atom_idx)
-        lines.append(f"{symbol:2s} {pos.x:15.8f} {pos.y:15.8f} {pos.z:15.8f}")
-
-    return "\n".join(lines)
+    # Use RDKit's built-in XYZ block writer
+    return rdmolfiles.MolToXYZBlock(mol)

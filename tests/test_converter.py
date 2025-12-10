@@ -14,7 +14,7 @@ class TestSMILESToXYZ:
     def test_simple_molecule_ethanol(self) -> None:
         """Test conversion of ethanol (CCO)."""
         xyz = smiles_to_xyz("CCO")
-        lines = xyz.split("\n")
+        lines = xyz.strip().split("\n")
 
         # Check number of atoms (2 C + 1 O + 6 H = 9 atoms)
         assert lines[0] == "9"
@@ -26,7 +26,7 @@ class TestSMILESToXYZ:
     def test_simple_molecule_water(self) -> None:
         """Test conversion of water (O)."""
         xyz = smiles_to_xyz("O")
-        lines = xyz.split("\n")
+        lines = xyz.strip().split("\n")
 
         # Water with hydrogens: 1 O + 2 H = 3 atoms
         assert lines[0] == "3"
