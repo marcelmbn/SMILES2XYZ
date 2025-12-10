@@ -14,7 +14,6 @@ class ConversionError(Exception):
     """Exception raised when SMILES to XYZ conversion fails."""
 
 
-
 def smiles_to_xyz(smiles: str, *, add_hydrogens: bool = True, optimize: bool = True) -> str:
     """Convert a SMILES string to XYZ format.
 

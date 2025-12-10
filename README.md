@@ -9,7 +9,7 @@ Python package for CLI conversion of SMILES to XYZ formats with explicit hydroge
 - Explicit hydrogen atoms added by default
 - UFF force field geometry optimization
 - Command-line interface and Python API
-- Type-safe implementation with full type hints (Python 3.13+)
+- Type-safe implementation with full type hints (Python 3.12+)
 
 ## Installation
 
@@ -19,7 +19,7 @@ pip install -e .
 
 ## Requirements
 
-- Python >= 3.13
+- Python >= 3.12
 - RDKit >= 2025.09.3
 
 ## Usage
