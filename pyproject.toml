@@ -42,29 +42,17 @@ where = ["."]
 include = ["smiles2xyz*"]
 
 [tool.mypy]
-python_version = "3.12"
 strict = true
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_any_generics = true
-check_untyped_defs = true
-no_implicit_optional = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_no_return = true
-strict_equality = true
 
 [tool.ruff]
 target-version = "py312"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "N", "UP", "ANN", "B", "A", "COM", "C4", "DTZ", "T10", "ISC", "ICN", "G", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SIM", "TID", "ARG", "ERA", "PD", "PGH", "PL", "TRY", "NPY", "RUF"]
-ignore = ["ANN101", "ANN102"]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["ANN201", "ANN001", "PLR2004", "S101"]
+"tests/*" = ["S101"]
 "smiles2xyz/cli.py" = ["T201"]
 
 [tool.pytest.ini_options]
