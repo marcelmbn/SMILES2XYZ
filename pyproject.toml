@@ -7,7 +7,7 @@ name = "smiles2xyz"
 version = "0.1.0"
 description = "Python package for CLI conversion of SMILES to XYZ formats"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 license = {text = "GPL-3.0"}
 authors = [
     {name = "Marcel Müller", email = "marcel.bn@web.de"}
@@ -18,6 +18,7 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering :: Chemistry",
     "Typing :: Typed",
@@ -41,7 +42,7 @@ where = ["."]
 include = ["smiles2xyz*"]
 
 [tool.mypy]
-python_version = "3.13"
+python_version = "3.12"
 strict = true
 warn_return_any = true
 warn_unused_configs = true
@@ -55,7 +56,7 @@ warn_no_return = true
 strict_equality = true
 
 [tool.ruff]
-target-version = "py313"
+target-version = "py312"
 line-length = 100
 
 [tool.ruff.lint]
