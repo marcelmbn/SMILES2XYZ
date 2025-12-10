@@ -2,6 +2,7 @@
 
 import pytest
 from rdkit import Chem
+from rdkit.Chem import AllChem
 
 from smiles2xyz import ConversionError, smiles_to_xyz
 from smiles2xyz.converter import mol_to_xyz
@@ -120,7 +121,6 @@ class TestMolToXYZ:
         """Test conversion of molecule with explicit hydrogens."""
         mol = Chem.MolFromSmiles("C")
         mol = Chem.AddHs(mol)
-        from rdkit.Chem import AllChem
 
         AllChem.EmbedMolecule(mol, randomSeed=42)
 

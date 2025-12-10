@@ -7,4 +7,4 @@ Line Entry System) strings to XYZ coordinate files with explicit hydrogen atoms.
 from smiles2xyz.converter import ConversionError, smiles_to_xyz
 
 __version__: str = "0.1.0"
-__all__: list[str] = ["smiles_to_xyz", "ConversionError"]
+__all__: list[str] = ["ConversionError", "smiles_to_xyz"]

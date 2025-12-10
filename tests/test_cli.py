@@ -1,7 +1,6 @@
 """Tests for CLI functionality."""
 
 import sys
-from io import StringIO
 from pathlib import Path
 from unittest.mock import patch
 
@@ -78,9 +77,8 @@ class TestCLI:
         """Test main function with invalid SMILES."""
         test_args = ["smiles2xyz", "INVALID!!!"]
 
-        with patch.object(sys, "argv", test_args):
-            with pytest.raises(SystemExit) as exc_info:
-                main()
+        with patch.object(sys, "argv", test_args), pytest.raises(SystemExit) as exc_info:
+            main()
 
         assert exc_info.value.code == 1
         captured = capsys.readouterr()

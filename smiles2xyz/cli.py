@@ -3,7 +3,6 @@
 import sys
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
-from typing import Final, NoReturn
 
 from smiles2xyz import ConversionError, smiles_to_xyz
 
@@ -15,7 +14,7 @@ def main() -> None:
 
     try:
         xyz_content: str = smiles_to_xyz(
-            args.smiles, add_hydrogens=args.hydrogens, optimize=args.optimize
+            args.smiles, add_hydrogens=args.hydrogens, optimize=args.optimize,
         )
 
         if args.output:

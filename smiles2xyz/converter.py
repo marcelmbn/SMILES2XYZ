@@ -13,7 +13,6 @@ from rdkit.Chem import AllChem
 class ConversionError(Exception):
     """Exception raised when SMILES to XYZ conversion fails."""
 
-    pass
 
 
 def smiles_to_xyz(smiles: str, *, add_hydrogens: bool = True, optimize: bool = True) -> str:
@@ -46,15 +45,14 @@ def smiles_to_xyz(smiles: str, *, add_hydrogens: bool = True, optimize: bool = T
         mol = Chem.AddHs(mol)
 
     # Generate 3D coordinates
-    if AllChem.EmbedMolecule(mol, randomSeed=42) == -1:
-        msg = f"Failed to generate 3D coordinates for SMILES: {smiles}"
-        raise ConversionError(msg)
+    if AllChem.EmbedMolecule(mol, randomSeed=42) == -1:  # type: ignore[attr-defined]
+        error_msg: str = f"Failed to generate 3D coordinates for SMILES: {smiles}"
+        raise ConversionError(error_msg)
 
     # Optimize geometry using UFF force field
-    if optimize:
-        if AllChem.UFFOptimizeMolecule(mol) != 0:
-            msg = f"Geometry optimization failed for SMILES: {smiles}"
-            raise ConversionError(msg)
+    if optimize and AllChem.UFFOptimizeMolecule(mol) != 0:  # type: ignore[attr-defined]
+        error_msg = f"Geometry optimization failed for SMILES: {smiles}"
+        raise ConversionError(error_msg)
 
     # Convert to XYZ format
     return mol_to_xyz(mol)
