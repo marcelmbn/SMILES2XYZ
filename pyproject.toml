@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smiles2xyz"
+version = "0.1.0"
+description = "Python package for CLI conversion of SMILES to XYZ formats"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "GPL-3.0"}
+authors = [
+    {name = "Marcel Müller", email = "marcel.bn@web.de"}
+]
+keywords = ["chemistry", "smiles", "xyz", "molecular-structures"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Typing :: Typed",
+]
+dependencies = [
+    "rdkit>=2025.09.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "mypy>=1.8.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+smiles2xyz = "smiles2xyz.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["smiles2xyz*"]
+
+[tool.mypy]
+strict = true
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+"smiles2xyz/cli.py" = ["T201"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
